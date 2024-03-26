@@ -11,7 +11,7 @@ This is a RESTful API for a hypothetical book review system built using FastAPI.
 
 2. Navigate to the project directory
 
-    cd book-review-system
+    cd Book-review
 
 3. Create a virtual environment
 
