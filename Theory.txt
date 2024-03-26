@@ -1,0 +1,35 @@
+Question 1: Explain how FastAPI handles asynchronous requests and its benefits over synchronous code in Python
+
+Answer:     FastAPI handles asynchronous requests by allowing certain parts of the code to pause while waiting for slow tasks,
+            like fetching data from a database or making network requests.
+            Instead of waiting for one task to finish before starting the next one
+            FastAPI can work on multiple tasks at the same time, making the application faster and more responsive.
+
+            FastAPI handles asynchronous requests by leveraging Python async and await keywords.
+
+            Non-Blocking I/O: Asynchronous code in FastAPI enables the server to continue processing other requests while waiting for I/O-bound tasks to finish,
+            such as fetching data from a database or making API calls. 
+            This non-blocking behavior ensures that the server remains responsive and can handle high loads of concurrent requests efficiently.
+
+            Event Loop Integration: FastAPI runs on top of an ASGI server (such as Uvicorn or Hypercorn),which manages an event loop.
+            When a request comes in, the ASGI server passes it to FastAPI's routing system,which then dispatches it to the appropriate async request handler.
+
+
+
+Question 2: Describe how dependency injection works in FastAPI and give an example of its practical use.
+
+Answer:     Dependency Declaration:In FastAPI, you specify dependencies directly in the route function signatures. 
+            These dependencies can be any Python objects, such as classes, functions, or data structures.
+
+
+            Automatic Injection:When a request is received for a route that requires dependencies,
+            FastAPI automatically identifies and injects those dependencies into the route function.
+            It does this by inspecting the type annotations of the route function parameters and resolving the corresponding dependencies from a global registry.
+
+            Dependency Resolution:FastAPI manages dependencies through a central registry called the dependency container.
+            Dependencies are registered in the container during application startup using app.dependency() or app.add_dependency(),
+            where you provide a function that returns the dependency object.
+
+            Lifecycle Management:FastAPI ensures that dependencies are created and destroyed appropriately based on their configured scope.
+
+            For example, dependencies with a "singleton" scope are instantiated once and reused across multiple requests, while those with a "request" scope are created anew for each incoming request.
