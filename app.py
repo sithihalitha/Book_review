@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 from fastapi.responses import JSONResponse
 from fastapi.testclient import TestClient
+import uvicorn
 
 app = FastAPI()
 
@@ -132,5 +133,5 @@ def test_submit_review():
 
 
 if __name__ == "__main__":
-    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
    
